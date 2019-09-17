@@ -80,7 +80,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     public let didSelect: PopMenuActionHandler?
     
     /// Icon sizing.
-    public var iconWidthHeight: CGFloat = 22
+    public var iconWidthHeight: CGFloat = 20
     
     // MARK: - Computed Properties
     
@@ -152,7 +152,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     // MARK: - Constants
     
     public static let textLeftPadding: CGFloat = 25
-    public static let iconLeftPadding: CGFloat = 18
+    public static let iconLeftPadding: CGFloat = 10
     
     // MARK: - Initializer
     
@@ -185,7 +185,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         view.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: hasImage ? iconImageView.trailingAnchor : view.leadingAnchor, constant: hasImage ? 8 : PopMenuDefaultAction.textLeftPadding),
+            titleLabel.leadingAnchor.constraint(equalTo: hasImage ? iconImageView.trailingAnchor : view.leadingAnchor, constant: hasImage ? 10 : PopMenuDefaultAction.textLeftPadding),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])

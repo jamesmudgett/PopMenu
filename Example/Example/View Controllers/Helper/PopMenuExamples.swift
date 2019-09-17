@@ -39,9 +39,10 @@ final class PopMenuExamples {
         
         let popMenu = PopMenuViewController(actions: actions)
         popMenu.appearance.popMenuCornerRadius = 12
-        popMenu.appearance.popMenuColor = 
         popMenu.appearance.popMenuItemSeparator = .fill(UIColor(white: 1, alpha: 0.2), height: 0.5)
-        popMenu.appearance.popMenuVisualEffect = UIBlurEffect(style: .light)
+        popMenu.appearance.popMenuColor.backgroundColor = .solid(fill: .clear)
+        popMenu.appearance.popMenuVisualEffect = UIBlurEffect(style: .dark)
+        popMenu.appearance.popMenuFont = .systemFont(ofSize: 15, weight: .regular)
         popMenu.appearance.popMenuActionHeight = 42
         return popMenu
     }
