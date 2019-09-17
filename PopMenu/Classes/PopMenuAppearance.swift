@@ -30,6 +30,9 @@ final public class PopMenuAppearance: NSObject {
     /// Corner radius for rounded corners.
     public var popMenuCornerRadius: CGFloat = 24
     
+    /// Background VisualEfffect.
+    public var popMenuVisualEffect: UIVisualEffect = UIBlurEffect(style: .dark)
+    
     /// How tall each action is.
     public var popMenuActionHeight: CGFloat = 50
     
@@ -100,12 +103,15 @@ public struct PopMenuColor {
     /// Background color instance.
     public var backgroundColor: PopMenuActionBackgroundColor
     
+    /// Background style instance.
+    public var backgroundStyle: PopMenuBackgroundStyle?
+    
     /// Action tint color instance.
     public var actionColor: PopMenuActionColor
     
     /// Compose the color.
-    public static func configure(background: PopMenuActionBackgroundColor, action: PopMenuActionColor) -> PopMenuColor {
-        return PopMenuColor(backgroundColor: background, actionColor: action)
+    public static func configure(background: PopMenuActionBackgroundColor, style: PopMenuBackgroundStyle, action: PopMenuActionColor) -> PopMenuColor {
+        return PopMenuColor(backgroundColor: background, backgroundStyle: style, actionColor: action)
     }
     
     /// Get default background and action color.

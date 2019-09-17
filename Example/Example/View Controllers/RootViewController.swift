@@ -63,7 +63,10 @@ class RootViewController: UITableViewController {
         
         // Customize appearance
         controller.appearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 16)!
-        controller.appearance.popMenuBackgroundStyle = .blurred(.dark)
+        controller.appearance.popMenuBackgroundStyle = .blurred(.light)
+        controller.appearance.popMenuItemSeparator = .fill()
+        controller.appearance.popMenuVisualEffect = UIBlurEffect(style: .light)
+        controller.appearance.popMenuActionHeight = 42
         // Configure options
         controller.shouldDismissOnSelection = false
         controller.delegate = self
@@ -88,7 +91,10 @@ class RootViewController: UITableViewController {
         ]
         // Customize appearance
         manager.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 16)!
-        manager.popMenuAppearance.popMenuBackgroundStyle = .blurred(.dark)
+        manager.popMenuAppearance.popMenuBackgroundStyle = .blurred(.light)
+        manager.popMenuAppearance.popMenuItemSeparator = .fill()
+        manager.popMenuAppearance.popMenuVisualEffect = UIBlurEffect(style: .light)
+        manager.popMenuAppearance.popMenuActionHeight = 42
         manager.popMenuShouldDismissOnSelection = false
         manager.popMenuDelegate = self
         // Present menu

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class PopMenuGradientView: UIView {
+public final class PopMenuGradientView: UIVisualEffectView {
     
     // MARK: - Properties
     

@@ -270,12 +270,13 @@ extension PopMenuViewController {
         contentView.layer.cornerRadius = appearance.popMenuCornerRadius
         contentView.layer.masksToBounds = true
         contentView.clipsToBounds = true
+        contentView.effect = appearance.popMenuVisualEffect
         
         let colors = appearance.popMenuColor.backgroundColor.colors
         if colors.count > 0 {
             if colors.count == 1 {
                 // Configure solid fill background.
-                contentView.backgroundColor = colors.first?.withAlphaComponent(0.9)
+                contentView.contentView.backgroundColor = colors.first?.withAlphaComponent(0.2)
                 contentView.startColor = .clear
                 contentView.endColor = .clear
             } else {
@@ -475,7 +476,7 @@ extension PopMenuViewController {
             scrollView.contentSize.height = appearance.popMenuActionHeight * CGFloat(actions.count)
             
             scrollView.addSubview(actionsView)
-            contentView.addSubview(scrollView)
+            contentView.contentView.addSubview(scrollView)
             
             NSLayoutConstraint.activate([
                 scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
@@ -494,13 +495,13 @@ extension PopMenuViewController {
             // Not scrollable
             actionsView.addGestureRecognizer(panGestureForMenu)
             
-            contentView.addSubview(actionsView)
+            contentView.contentView.addSubview(actionsView)
             
             NSLayoutConstraint.activate([
                 actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
                 actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-                actionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-                actionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
+                actionsView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                actionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ])
         }
     }
@@ -618,7 +619,7 @@ extension PopMenuViewController {
         if shouldEnableHaptics {
             // Generate haptics
             if #available(iOS 10.0, *) {
-                Haptic.impact(.medium).generate()
+                Haptic.impact(.light).generate()
             }
         }
         

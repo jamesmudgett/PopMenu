@@ -80,7 +80,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     public let didSelect: PopMenuActionHandler?
     
     /// Icon sizing.
-    public var iconWidthHeight: CGFloat = 27
+    public var iconWidthHeight: CGFloat = 22
     
     // MARK: - Computed Properties
     
@@ -193,7 +193,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
 
     /// Load and configure the action view.
     public func renderActionView() {
-        view.layer.cornerRadius = 14
+        view.layer.cornerRadius = 0
         view.layer.masksToBounds = true
         
         configureViews()
@@ -204,7 +204,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     public func highlightActionView(_ highlight: Bool) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.26, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 9, options: self.highlighted ? UIView.AnimationOptions.curveEaseIn : UIView.AnimationOptions.curveEaseOut, animations: {
-                self.view.transform = self.highlighted ? CGAffineTransform.identity.scaledBy(x: 1.09, y: 1.09) : .identity
+                self.view.transform = self.highlighted ? CGAffineTransform.identity.scaledBy(x: 1.02, y: 1.02) : .identity
                 self.view.backgroundColor = self.highlighted ? self.backgroundColor.withAlphaComponent(0.25) : .clear
             }, completion: nil)
         }
@@ -220,7 +220,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.175, animations: {
-                self.view.transform = CGAffineTransform.identity.scaledBy(x: 0.915, y: 0.915)
+                self.view.transform = CGAffineTransform.identity.scaledBy(x: 0.93, y: 0.93)
                 self.view.backgroundColor = self.backgroundColor.withAlphaComponent(0.18)
             }, completion: { _ in
                 UIView.animate(withDuration: 0.175, animations: {
