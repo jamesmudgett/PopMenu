@@ -30,7 +30,7 @@ import UIKit
     static var textLeftPadding: CGFloat { get }
     
     /// Icon left padding when icons are present.
-    static var iconLeftPadding: CGFloat { get }
+    static var iconRightPadding: CGFloat { get }
     
     /// Icon sizing.
     var iconWidthHeight: CGFloat { get set }
@@ -151,8 +151,8 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     
     // MARK: - Constants
     
-    public static let textLeftPadding: CGFloat = 25
-    public static let iconLeftPadding: CGFloat = 10
+    public static let textLeftPadding: CGFloat = 15
+    public static let iconRightPadding: CGFloat = 15
     
     // MARK: - Initializer
     
@@ -177,7 +177,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
             NSLayoutConstraint.activate([
                 iconImageView.widthAnchor.constraint(equalToConstant: iconWidthHeight),
                 iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
-                iconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: PopMenuDefaultAction.iconLeftPadding),
+                iconImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -PopMenuDefaultAction.iconRightPadding),
                 iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
         }
@@ -185,10 +185,16 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         view.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: hasImage ? iconImageView.trailingAnchor : view.leadingAnchor, constant: hasImage ? 10 : PopMenuDefaultAction.textLeftPadding),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: PopMenuDefaultAction.textLeftPadding),
             titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        if hasImage {
+            NSLayoutConstraint.activate([
+                titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 175),
+                titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(PopMenuDefaultAction.iconRightPadding + iconWidthHeight + PopMenuDefaultAction.textLeftPadding))
+            ])
+        }
     }
 
     /// Load and configure the action view.

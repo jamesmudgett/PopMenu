@@ -119,6 +119,7 @@ final public class PopMenuViewController: UIViewController {
     
     /// Max content width allowed for the content to stretch to.
     fileprivate let maxContentWidth: CGFloat = UIScreen.main.bounds.size.width * 0.9
+    fileprivate let minContentWidth: CGFloat = 190
     
     // MARK: - View Life Cycle
     
@@ -260,7 +261,7 @@ extension PopMenuViewController {
     /// Setup the content view.
     fileprivate func configureContentView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addShadow(offset: .init(width: 0, height: 1), opacity: 0.5, radius: 20)
+        containerView.addShadow(offset: .init(width: 0, height: 1), opacity: 0.2, radius: 12)
         containerView.layer.cornerRadius = appearance.popMenuCornerRadius
         containerView.backgroundColor = .clear
         
@@ -435,7 +436,7 @@ extension PopMenuViewController {
             contentFitWidth += action.iconWidthHeight
         }
         
-        return min(contentFitWidth,maxContentWidth)
+        return min(max(contentFitWidth, minContentWidth), maxContentWidth)
     }
     
     /// Setup actions view.
